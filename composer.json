@@ -8,7 +8,8 @@
         "php": "^8.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
-        "mongodb/laravel-mongodb": "^4.7"
+        "mongodb/laravel-mongodb": "^4.7",
+        "notsoweb/permission": "@dev"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -52,6 +53,12 @@
             "dont-discover": []
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/notsoweb/permission"
+        }
+    ],
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",

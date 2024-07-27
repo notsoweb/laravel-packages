@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d582832c6a8cb8dcf404b077d0e079b5",
+    "content-hash": "be93731dc584dc6db0b93957ab128c66",
     "packages": [
         {
             "name": "brick/math",
@@ -2409,6 +2409,37 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v5.1.0"
             },
             "time": "2024-07-01T20:03:41+00:00"
+        },
+        {
+            "name": "notsoweb/permission",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/notsoweb/permission",
+                "reference": "6a36e5cb4f47ab41e5ca1f3ff298cb9b7a5cc344"
+            },
+            "require": {
+                "mongodb/laravel-mongodb": "^4.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Notsoweb\\Permission\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Moisés Cortés C.",
+                    "email": "moises.cortes@notsoweb.com"
+                }
+            ],
+            "description": "Sistema de roles y permisos para laravel con mongodb",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "nunomaduro/termwind",
@@ -8078,7 +8109,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "notsoweb/permission": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
