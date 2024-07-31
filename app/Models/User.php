@@ -1,26 +1,22 @@
 <?php namespace App\Models;
-/**
- * @copyright 2024 Notsoweb (https://notsoweb.com) - All rights reserved.
- */
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
 use MongoDB\Laravel\Auth\User as Authenticatable;
-use Notsoweb\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
+use Laravel\Jetstream\HasProfilePhoto;
+use Laravel\Sanctum\HasApiTokens;
+use Notsoweb\LaravelMongoDB\Permission\Traits\HasRoles;
 
-/**
- * Usuarios del sistema
- * 
- * @author Moisés Cortés C. <moises.cortes@notsoweb.com>
- * 
- * @version 1.0.0
- */
 class User extends Authenticatable
 {
-    use HasFactory,
-        HasRoles,
-        Notifiable;
+    use HasApiTokens;
+    use HasFactory;
+    use HasRoles;
+    use HasProfilePhoto;
+    use Notifiable;
+    use TwoFactorAuthenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -41,6 +37,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_recovery_codes',
+        'two_factor_secret',
+    ];
+
+    /**
+     * The accessors to append to the model's array form.
+     *
+     * @var array<int, string>
+     */
+    protected $appends = [
+        'profile_photo_url',
     ];
 
     /**

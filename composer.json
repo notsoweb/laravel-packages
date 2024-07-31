@@ -6,10 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.9",
+        "laravel/jetstream": "^5.1",
+        "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "mongodb/laravel-mongodb": "^4.7",
-        "notsoweb/permission": "@dev"
+        "notsoweb/laravel-mongodb-permission": "@dev",
+        "notsoweb/laravel-mongodb-session": "@dev",
+        "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -46,6 +51,28 @@
             "@php artisan key:generate --ansi",
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
+        ],
+        "env:dev": [
+            "composer install",
+            "composer run post-root-package-install",
+            "composer run post-create-project-cmd",
+            "php artisan storage:link"
+        ],
+        "env:prod": [
+            "composer install --no-dev",
+            "composer run post-root-package-install",
+            "composer run post-create-project-cmd"
+        ],
+        "env:prod-lite": [
+            "composer install --no-dev",
+            "composer run post-root-package-install",
+            "composer run post-create-project-cmd"
+        ],
+        "db:dev": [
+            "php artisan migrate:fresh --seeder=DevSeeder"
+        ],
+        "db:prod": [
+            "php artisan migrate:fresh --seed"
         ]
     },
     "extra": {
@@ -56,7 +83,11 @@
     "repositories": [
         {
             "type": "path",
-            "url": "packages/notsoweb/permission"
+            "url": "packages/notsoweb/laravel-mongodb-permission"
+        },
+        {
+            "type": "path",
+            "url": "packages/notsoweb/laravel-mongodb-session"
         }
     ],
     "config": {
