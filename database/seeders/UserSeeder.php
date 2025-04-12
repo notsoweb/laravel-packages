@@ -6,19 +6,24 @@ use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Notsoweb\LaravelMongoDB\Permission\Models\Role;
+use Notsoweb\LaravelMongoDB\Permission\Traits\UserSecurePassword;
 
 class UserSeeder extends Seeder
 {
+    use UserSecurePassword;
+
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
+        $user = $this->securePassword('developer@notsoweb.com');
+
         User::create([
             'name' => 'Developer',
             'paternal' => 'Notsoweb',
-            'email' => 'developer@notsoweb.com',
-            'password' => bcrypt('password'),
-        ])->assignRole(__('administrator'));
+            'email' => $user->email,
+            'password' => $user->password,
+        ]);
     }
 }

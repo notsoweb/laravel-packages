@@ -14,6 +14,7 @@
         "mongodb/laravel-mongodb": "^4.7",
         "notsoweb/laravel-mongodb-permission": "@dev",
         "notsoweb/laravel-mongodb-session": "@dev",
+        "notsoweb/laravel-jetstream-vuejs": "@dev",
         "tightenco/ziggy": "^2.0"
     },
     "require-dev": {
@@ -84,6 +85,10 @@
         {
             "type": "path",
             "url": "packages/notsoweb/laravel-mongodb-permission"
+        },
+        {
+            "type": "path",
+            "url": "packages/notsoweb/laravel-jetstream-vuejs"
         },
         {
             "type": "path",
